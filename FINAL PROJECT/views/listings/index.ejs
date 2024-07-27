@@ -1,0 +1,33 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+  <!-- <form action="/listings/new" method="get">
+    <button>Create new listing</button>
+  </form> -->
+  
+<section class="main">
+  <h1>OUR PRODUCTS!</h1>
+</section>
+  <div class="allpro-listings">
+  <% if (alllistings && alllistings.length > 0) { %> <% for (let listing of
+  alllistings) { %>
+    <a href="/listings/<%=listing.id%>" class="listing-tags">
+      
+      <div class="card" >
+        <img src="<%=listing.image%>" class="card-img-top" alt="listing-image" />
+        <div class="card-body">
+          <p class="card-text">
+            <b><%=listing.pname%></b>
+            <p class="text-price-card">&#x20A8; <%=listing.Price%></p>
+          </p>
+      <button href="/listings/<%=listing.id%>" class="show-detail-btn">Show Details </button>
+        </div>
+        </div>
+      </a>
+      <% } %> <% } else { %>
+        <ul>
+          </div>
+    <li>No listings available</li>
+  </ul>
+  <% } %>
+</div>
+</body>

@@ -1,0 +1,97 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<body class="new">
+  <div class="row form-newlistings">
+    <div class="col-4 offset-4 new-form">
+      <h3 class="mt-4">Create a new listing</h3>
+      <form
+        action="/listings"
+        method="post"
+        novalidate
+        class="needs-validation"
+      >
+        <div class="mb-3">
+          <label for="pname" class="form-label">Enter product name</label>
+          <input
+            required
+            type="text"
+            name="listing[pname]"
+            placeholder="Product Name"
+            class="form-control"
+          />
+          <div class="valid-feedback">Product name looks good!</div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-md-8">
+            <label for="SID" class="form-label">Enter Product ID</label>
+            <input
+              required
+              type="text"
+              name="listing[SID]"
+              placeholder="Product ID"
+              class="form-control"
+            />
+            <div class="invalid-feedback">Product ID should be valid!</div>
+          </div>
+          <div class="mb-3 col-md-4">
+            <label for="Price" class="form-label">Enter Price</label>
+            <input
+              required
+              type="text"
+              name="listing[Price]"
+              placeholder="Price"
+              class="form-control"
+            />
+            <div class="invalid-feedback">Price should be valid!</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Enter Description</label>
+          <textarea
+            name="listing[pd]"
+            id=""
+            placeholder="Product Description"
+            class="form-control"
+            required
+          ></textarea>
+          <div class="invalid-feedback">Please enter a short description!</div>
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Enter Product Image</label>
+          <input
+            type="text"
+            name="listing[image]"
+            placeholder="Product Image url"
+            class="form-control"
+          />
+        </div>
+
+        <button type="submit" class="btn mb-4 btns">Add Product</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      "use strict";
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll(".needs-validation");
+
+      // Loop over them and prevent submission
+      Array.from(forms).forEach((form) => {
+        form.addEventListener(
+          "submit",
+          (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    });
+  </script>
+</body>

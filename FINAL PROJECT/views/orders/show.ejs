@@ -1,0 +1,37 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+<link rel="stylesheet" href="/css/style2.css" />
+
+<body>
+  <section class="customer-body">
+    <h1>ORDERS</h1>
+  </section>
+  <div class="container">
+    <div class="allOrders">
+      <div class="table-header table-row mt-5 mb-5">
+        <div class="col col-1 first-item">Order ID</div>
+        <div class="col col-1">Customer ID</div>
+        <div class="col col-2">Order Date</div>
+        <div class="col col-2">Total Bill</div>
+        <div class="col col-1">Delivered</div>
+        <a href="" class="col col-1"></a>
+      </div>
+      <% for (let order of orders) { %>
+      <div class="table-row">
+        <div class="col col-1 first-item" data-label="Order ID">
+          <%= order.OID %>
+        </div>
+        <div class="col col-1" data-label="Customer ID">
+          <%= order.CustomerId %>
+        </div>
+        <div class="col col-2" data-label="Order Date"><%= order.odate %></div>
+        <div class="col col-2" data-label="Total Bill">
+          <%= order.totalbill %>
+        </div>
+        <div class="col col-1" data-label="Delivered">
+          <%= order.delivered %>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</body>

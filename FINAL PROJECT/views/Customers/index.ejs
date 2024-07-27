@@ -1,0 +1,65 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+<link rel="stylesheet" href="/css/style2.css" />
+
+<body>
+  <!-- <form action="/listings/new" method="get">
+    <button>Create new listing</button>
+  </form> -->
+
+  <section class="customer-body">
+    <h1>OUR HAPPY CUSTOMERS!</h1>
+  </section>
+  <div class="container">
+    <div class="allCustomers">
+      <div class="table-header table-row mt-5 mb-5">
+        <div class="col col-1 first-item">Customer ID</div>
+        <div class="col col-1">First Name</div>
+        <div class="col col-1">Last Name</div>
+        <div class="col col-2">Email</div>
+        <div class="col col-1">Phone No</div>
+        <div class="col col-1">House No</div>
+        <div class="col col-2">Street</div>
+        <div class="col col-2">Town</div>
+        <div class="col col-1">City</div>
+      </div>
+      <ul>
+        <% for (let customer of allCustomers) { %>
+        <ul>
+          <div class="table-row">
+            <div class="col col-1 first-item" data-label="Customer ID">
+              <%= customer.CID !== null ? customer.CID : '-' %>
+            </div>
+            <div class="col col-1" data-label="First Name">
+              <%= customer.fname !== null ? customer.fname : '-' %>
+            </div>
+            <div class="col col-1" data-label="Last Name">
+              <%= customer.lname !== null ? customer.lname : '-' %>
+            </div>
+            <div class="col col-2" data-label="Email">
+              <%= customer.email !== null ? customer.email : '-' %>
+            </div>
+            <div class="col col-1" data-label="Phone No">
+              <%= customer.phoneno !== null ? customer.phoneno : '-' %>
+            </div>
+            <div class="col col-1" data-label="House No">
+              <%= customer.houseno !== null ? customer.houseno : '-' %>
+            </div>
+            <div class="col col-2" data-label="Street">
+              <%= customer.strname !== null ? customer.strname : '-' %>
+            </div>
+            <div class="col col-2" data-label="Town ">
+              <%= customer.townname !== null ? customer.townname : '-' %>
+            </div>
+            <div class="col col-1" data-label="City">
+              <%= customer.city !== null ? customer.city : '-' %>
+            </div>
+            <a href="/customers/<%=customer.CID%>/edit" class="cust-btn"
+              >Edit</a
+            >
+          </div>
+        </ul>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,45 @@
+.table-header {
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  background-color: rgba(75, 124, 30, 0.418);
+}
+.first-item {
+  padding-left: 10px;
+}
+
+.table-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+ul {
+  padding: 0;
+}
+.container div {
+  font-size: 12px;
+}
+.table-row {
+  margin-bottom: 10px;
+}
+.table-row > .col {
+  text-align: center;
+}
+h1 {
+  font-size: 6em;
+  color: rgb(226, 243, 206);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cust-btn {
+  text-decoration: none;
+}
+.cust-btn:hover {
+  color: black;
+  text-decoration: underline;
+}

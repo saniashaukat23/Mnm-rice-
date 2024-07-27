@@ -1,0 +1,173 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+<link rel="stylesheet" href="/css/style2.css" />
+
+<body>
+  <section class="customer-body">
+    <h1>ADD NEW CUSTOMER</h1>
+  </section>
+  <div class="container">
+    <div class="row form-newcustomer">
+      <div class="col-6 offset-3 new-form">
+        <form
+          action="/customers"
+          method="post"
+          novalidate
+          class="needs-validation"
+          id="customerForm"
+        >
+          <!-- Input fields for customer data -->
+          <div class="row">
+            <div class="mb-3 col-6">
+              <label for="fname" class="form-label">First Name</label>
+              <input
+                required
+                type="text"
+                name="customer[fname]"
+                placeholder="First Name"
+                class="form-control"
+              />
+
+              <div class="invalid-feedback">Please enter a first name!</div>
+            </div>
+            <div class="mb-3 col-6">
+              <label for="lname" class="form-label">Last Name</label>
+              <input
+                required
+                type="text"
+                name="customer[lname]"
+                placeholder="Last Name"
+                class="form-control"
+              />
+              <div class="invalid-feedback">Please enter a last name!</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              required
+              type="email"
+              name="customer[email]"
+              placeholder="Email"
+              class="form-control"
+            />
+            <div class="invalid-feedback">
+              Please enter a valid email address!
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-5">
+              <label for="phoneno" class="form-label">Phone No</label>
+              <input
+                required
+                type="text"
+                name="customer[phoneno]"
+                placeholder="Phone No"
+                class="form-control"
+              />
+              <div class="invalid-feedback">Please enter a phone number!</div>
+            </div>
+            <div class="mb-3 col-7">
+              <label for="houseno" class="form-label">House No</label>
+              <input
+                required
+                type="text"
+                name="customer[houseno]"
+                placeholder="House No"
+                class="form-control"
+              />
+              <div class="invalid-feedback">Please enter a house number!</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="strname" class="form-label">Street</label>
+            <input
+              required
+              type="text"
+              name="customer[strname]"
+              placeholder="Street"
+              class="form-control"
+            />
+            <div class="invalid-feedback">Please enter a street name!</div>
+          </div>
+          <div class="mb-3">
+            <label for="townname" class="form-label">Town</label>
+            <input
+              required
+              type="text"
+              name="customer[townname]"
+              placeholder="Town"
+              class="form-control"
+            />
+            <div class="invalid-feedback">Please enter a town name!</div>
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input
+              required
+              type="text"
+              name="customer[city]"
+              placeholder="City"
+              class="form-control"
+            />
+            <div class="invalid-feedback">Please enter a city!</div>
+          </div>
+
+          <!-- Hidden field for CID -->
+          <input type="hidden" name="customer[CID]" id="CID" />
+
+          <!-- Other input fields for the customer data -->
+
+          <button type="submit" class="btn mb-4 btns">Add Customer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      function generateCID(length) {
+        const characters =
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let result = "";
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+          result += characters.charAt(
+            Math.floor(Math.random() * charactersLength)
+          );
+        }
+        return result;
+      }
+
+      const form = document.getElementById("customerForm");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent the form from submitting immediately
+
+        // Generate a unique CID using the generateCID function
+        const CID = generateCID(6); // Generate a CID of length 6
+
+        // Set the generated CID as the value of the hidden input field
+        const CIDField = document.getElementById("CID");
+        CIDField.value = CID;
+
+        // Now submit the form
+        form.submit();
+      });
+
+      const forms = document.querySelectorAll(".needs-validation");
+      Array.from(forms).forEach((form) => {
+        form.addEventListener(
+          "submit",
+          (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    });
+  </script>
+</body>

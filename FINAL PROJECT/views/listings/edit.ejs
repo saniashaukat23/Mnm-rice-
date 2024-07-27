@@ -1,0 +1,103 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+  <div class="row edit form-newlistings">
+    <div class="col-4 offset-4 new-form">
+      <form
+        method="post"
+        action="/listings/<%=listing.id%>?_method=PUT"
+        class="mt-4 needs-validation"
+        novalidate
+      >
+        <h3>Edit your listing</h3>
+        <div class="mb-3">
+          <label for="pname" class="form-label">Product name</label>
+          <input
+            required
+            type="text"
+            name="listing[pname]"
+            value="<%= listing.pname %>"
+            placeholder="Enter name"
+            class="form-control"
+          />
+        </div>
+        <div class="row">
+          <div class="mb-3 col-7">
+            <label for="SID" class="form-label">Product ID</label>
+
+            <input
+              required
+              type="text"
+              name="listing[SID]"
+              value="<%= listing.SID %>"
+              placeholder="Enter ID"
+              class="form-control"
+            />
+          </div>
+          <div class="mb-3 col-5">
+            <label for="price" class="form-label mb-1">Price</label>
+
+            <input
+              required
+              type="number"
+              name="listing[Price]"
+              value="<%= listing.Price %>"
+              placeholder="Enter price"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+
+          <textarea
+            name="listing[pd]"
+            placeholder="Write description"
+            class="form-control"
+            required
+          >
+      <%=listing.pd%></textarea
+          >
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label"> Product Image</label>
+
+          <input
+            type="text"
+            name="listing[image]"
+            value="<%= listing.image %>"
+            placeholder="Enter image url"
+            class="form-control"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-dark add-btn mt-3 mb-3 btns">
+          Edit
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll(".needs-validation");
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  });
+</script>

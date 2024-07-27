@@ -1,0 +1,145 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+
+<body>
+  <div class="row edit form-newlistings">
+    <div class="col-4 offset-4 new-form">
+      <form
+        method="post"
+        action="/customers/<%= customer.CID %>?_method=PUT"
+        class="mt-4 needs-validation"
+        novalidate
+      >
+        <!-- Input fields populated with customer data -->
+        <div class="mb-3">
+          <label for="fname" class="form-label">First Name</label>
+          <input
+            required
+            type="text"
+            name="customer[fname]"
+            value="<%= customer.fname %>"
+            placeholder="Enter first name"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="lname" class="form-label">Last Name</label>
+          <input
+            type="text"
+            name="customer[lname]"
+            value="<%= customer.lname %>"
+            placeholder="Enter last name"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            name="customer[email]"
+            value="<%= customer.email %>"
+            placeholder="Enter email"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="phoneno" class="form-label">Phone Number</label>
+          <input
+            required
+            type="tel"
+            name="customer[phoneno]"
+            value="<%= customer.phoneno %>"
+            placeholder="Enter phone number"
+            class="form-control"
+          />
+        </div>
+        <div class="row">
+          <div class="mb-3 col-6">
+            <label for="houseno" class="form-label">House Number</label>
+            <input
+              required
+              type="text"
+              name="customer[houseno]"
+              value="<%= customer.houseno %>"
+              placeholder="Enter house number"
+              class="form-control"
+            />
+          </div>
+          <div class="mb-3 col-6">
+            <label for="strname" class="form-label">Street Name</label>
+            <input
+              required
+              type="text"
+              name="customer[strname]"
+              value="<%= customer.strname %>"
+              placeholder="Enter street name"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="townname" class="form-label">Town</label>
+          <input
+            required
+            type="text"
+            name="customer[townname]"
+            value="<%= customer.townname %>"
+            placeholder="Enter town"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="city" class="form-label">City</label>
+          <input
+            required
+            type="text"
+            name="customer[city]"
+            value="<%= customer.city %>"
+            placeholder="Enter city"
+            class="form-control"
+          />
+        </div>
+        <!-- Submit button -->
+        <div class="show-btns">
+          <form action="/customers/<%=customer.CID%>/edit" method="get">
+            <button type="submit" class="btn btn-dark add-btn mt-3 mb-3 btns">
+              Edit
+            </button>
+          </form>
+          <form
+            action="/customers/<%=customer.CID%>?_method=DELETE"
+            method="post"
+          >
+            <button type="submit" class="btn btn-dark add-btn mt-3 mb-3 btns">
+              Delete
+            </button>
+          </form>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll(".needs-validation");
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  });
+</script>
